@@ -1,0 +1,15 @@
+thead{
+  background-color: aliceblue;
+}
+tr:hover{
+  background-color: blueviolet;
+  font-weight: bold;
+}
+
+td{
+  vertical-align: bottom;
+}
+
+#cryptodata{
+  vertical-align: bottom;
+}

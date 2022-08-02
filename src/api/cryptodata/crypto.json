@@ -1,0 +1,56 @@
+[
+    {
+        "timeStamp": "12",
+        "symbol": "APPL",
+        "open": 12,
+        "high": 2145,
+        "low": 242,
+        "close": 2545,
+        "volume": 19.95
+    },
+    {
+        "timeStamp": "1",
+        "symbol": "APPL",
+        "open": 12,
+        "high": 22,
+        "low": 120,
+        "close": 100,
+        "volume": 19.95
+    },
+    {
+        "timeStamp": "12",
+        "symbol": "APPL",
+        "open": 12,
+        "high": 2145,
+        "low": 242,
+        "close": 2545,
+        "volume": 19.95
+    },
+    {
+        "timeStamp": "1",
+        "symbol": "APPL",
+        "open": 12,
+        "high": 322,
+        "low": 330,
+        "close": 100,
+        "volume": 19.95
+    },
+    {
+        "timeStamp": "12",
+        "symbol": "APPL",
+        "open": 12,
+        "high": 2145,
+        "low": 2342,
+        "close": 2545,
+        "volume": 19.95
+    },
+    {
+        "timeStamp": "1",
+        "symbol": "APPL",
+        "open": 1123,
+        "high": 122,
+        "low": 123,
+        "close": 100,
+        "volume": 19.95
+    }
+]

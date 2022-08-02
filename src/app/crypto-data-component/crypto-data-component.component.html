@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Symbol</th>
+        <th>Price</th>
+        <th>Open</th>
+        <th>High</th>
+        <th>Low</th>
+        <th>Close</th>
+        <th>Volume</th>
+        <th>Favorite</th>
+      </tr>
+    </thead>
+    <tbody id="cryptodata">
+      <tr *ngFor="let crypto of cryptoList" >
+        <td>{{crypto.last_updated|date:"hh:mm:ss"}}</td>
+        <td><img [attr.src]="crypto.image" width="44" />{{crypto.symbol}}</td>
+        <td>{{crypto.current_price|currency}}</td>
+        <td>{{crypto.open|currency}}</td>
+        <td>{{crypto.high_24h|currency}}</td>
+        <td>{{crypto.low_24h|currency}}</td>
+        <td>{{crypto.close|currency}}</td>
+        <td>{{crypto.total_volume}}</td>
+        <td><button>Add</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
