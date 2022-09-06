@@ -1,0 +1,14 @@
+<mat-card class="card">
+  <mat-card-header>{{ data.id }}</mat-card-header>
+  <div mat-card-avatar class="cardheader"></div>
+  <mat-card-title><title></title></mat-card-title>
+  <mat-card-subtitle>sub</mat-card-subtitle>
+  <mat-card-content>
+    <p>
+      {{ data.description.en }}
+    </p>
+    <h3>Website</h3>
+    <a href="{{ link }}" *ngFor="let link of data.links.homepage">{{ link }}</a>
+  </mat-card-content>
+  <mat-card-footer>Footer</mat-card-footer>
+</mat-card>

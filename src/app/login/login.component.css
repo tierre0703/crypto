@@ -1,0 +1,17 @@
+button {
+  margin: 8px;
+}
+
+.card {
+  height: stretch;
+}
+
+.mat-form-field {
+  width: 100%;
+  display: block;
+}
+
+.mat-raised-button {
+  width: 100%;
+  margin-top: 15px;
+}

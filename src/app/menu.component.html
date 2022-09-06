@@ -1,0 +1,43 @@
+<mat-toolbar class="menu">
+  <img
+    routerLink="crypto"
+    routerLinkActive="router-link-active"
+    class="logo"
+    src="../assets/logo.png"
+    alt="Logo"
+  />
+  <span class="title">Crypto</span>
+  <span class="menu-spacer"></span>
+  <button
+    class="menu"
+    mat-icon-button
+    mat-button
+    [matMenuTriggerFor]="menu"
+    class="icon-button with menu icon"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button
+      *ngIf="(auth.isLoggedIn$ | async) === false"
+      routerLink="login"
+      mat-menu-item
+    >
+      Login
+    </button>
+    <button
+      *ngIf="auth.isLoggedIn$ | async"
+      (click)="auth.logout()"
+      mat-menu-item
+    >
+      Logout
+    </button>
+    <button
+      *ngIf="(auth.isLoggedIn$ | async) === false"
+      routerLink="register"
+      mat-menu-item
+    >
+      Register
+    </button>
+  </mat-menu>
+</mat-toolbar>
