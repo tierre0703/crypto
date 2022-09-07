@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { user } from '../user';
 
 @Injectable({
@@ -8,11 +8,9 @@ import { user } from '../user';
 })
 export class AuthService {
   public isLoggedIn$: BehaviorSubject<boolean>;
-  public watchList$!: BehaviorSubject<string[]>;
+  public watchList$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
-  public userInfo$: BehaviorSubject<user | null> = new BehaviorSubject<user | null>(null);
-
-  constructor(private http: HttpClient) {
+  constructor(public http:HttpClient) {
     const isLoggedIn = localStorage.getItem('loggedIn') === 'false';
     this.isLoggedIn$ = new BehaviorSubject(isLoggedIn);
   }
@@ -25,20 +23,16 @@ export class AuthService {
     this.isLoggedIn$.next(d);
   }
 
-  login() {
-    this.http.get<user>('/assets/cryptodata.json').subscribe(data=>{
-      this.userInfo$.next(data);
-    });
+
+  setWatchListState(d:string[])
+  {
+    this.watchList$.next(d);
   }
 
-
-  setUserState(d: user) {
-    this.userInfo$.next(d);
-  }
 
   logout() {
     this.isLoggedIn$.next(false);
-    this.userInfo$.next(null);
+    this.watchList$.next([]);
     localStorage.clear();
   }
 }

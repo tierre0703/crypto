@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'crypto/:id', component: DetailComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: SignupComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'crypto', pathMatch: 'full' },
 ];
 
 @NgModule({

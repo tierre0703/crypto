@@ -1,59 +1,12 @@
 {
   "posts": [
     {
-      "id": 1
-    },
-    [
-      {
-        "emailCtrl": "getta@r.com"
-      },
-      {
-        "firstNameCtrl": "Mulugeta",
-        "lastNameCtrl": "sad"
-      },
-      {
-        "userNameCtrl": "my",
-        "passwordCtrl": "sda"
-      }
-    ],
-    [
-      {
-        "emailCtrl": "getta@getta.com"
-      },
-      {
-        "firstNameCtrl": "getta",
-        "lastNameCtrl": "robertson"
-      },
-      {
-        "userNameCtrl": "getta",
-        "passwordCtrl": "123"
-      }
-    ],
-    [
-      {
-        "emailCtrl": "vcx"
-      },
-      {
-        "firstNameCtrl": "xbv",
-        "lastNameCtrl": "xvcvxcv"
-      },
-      {
-        "userNameCtrl": "xvvc",
-        "passwordCtrl": "xv"
-      }
-    ],
-    [
-      {
-        "emailCtrl": "getta"
-      },
-      {
-        "firstNameCtrl": "Mulugeta",
-        "lastNameCtrl": "Robertson"
-      },
-      {
-        "userNameCtrl": "my",
-        "passwordCtrl": "cxgxg"
-      }
-    ]
+      "first_name": "getta",
+      "username": "getta",
+      "email": "sdf",
+      "password": "getta",
+      "watch_list": [],
+      "id": 2
+    }
   ]
 }

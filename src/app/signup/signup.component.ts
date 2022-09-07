@@ -1,3 +1,4 @@
+import { validateHorizontalPosition } from '@angular/cdk/overlay';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -51,33 +52,25 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('form built');
-    this.formData.email = this.emailForm.value;
-    this.formData.first_name = this.nameForm.controls[0].value;
   }
 
   signUP() {
-    const postData = this.nameForm.get(['firstNameCtrl']);
-    console.log(postData);
-    //const data = this.nameForm.value+this.emailForm.value+this.userNPassForm.value;
-    //console.log(data);
-    this.http
-      .post('http://localhost:3000/posts', [
-        this.emailForm.value,
-        this.nameForm.value,
-        this.userNPassForm.value,
-      ])
-      .subscribe(
-        (res) => {
-          alert('user was created');
-          this.nameForm.reset();
-          this.emailForm.reset();
-          this.userNPassForm.reset();
-          this.router.navigate(['login']);
-        },
-        (err) => {
-          alert('there was an error');
-        }
-      );
+    const valid = false;
+    if (valid) {
+    }
+
+    this.http.post('http://localhost:3000/posts', this.formData).subscribe(
+      (res) => {
+        alert('user was created');
+        this.nameForm.reset();
+        this.emailForm.reset();
+        this.userNPassForm.reset();
+        this.router.navigate(['login']);
+      },
+      (err) => {
+        alert('there was an error');
+      }
+    );
 
     //implement server side validation and insert later, for routs back to home page
   }

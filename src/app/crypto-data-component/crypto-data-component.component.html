@@ -21,7 +21,7 @@
     <ng-container matColumnDef="image">
       <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
       <td mat-cell *matCellDef="let element">
-        <img [src]="element.image" width="50" />
+        <img [src]="element.image" width="50" alt="logo" />
       </td>
     </ng-container>
 
@@ -75,18 +75,10 @@
     <ng-container matColumnDef="favorite">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Favorite</th>
       <td mat-cell *matCellDef="let element">
-        <button
-        *ngIf="!watchList.includes(element.id)"
-          (click)="addWatch(element.id)"
-          class="btn btn-primary"
-        >
+        <button *ngIf="!watchList.includes(element.id)" (click)="addWatch(element.id)" class="btn btn-primary">
           Add
         </button>
-        <button
-          *ngIf="watchList.includes(element.id)"
-          (click)="removeWatch(element.id)"
-          class="btn btn-danger"
-        >
+        <button *ngIf="watchList.includes(element.id)"(click)="removeWatch(element.id)" class="btn btn-danger">
           Remove
         </button>
       </td>
