@@ -1,12 +1,36 @@
 {
-  "posts": [
+  "users": [
     {
       "first_name": "getta",
       "username": "getta",
       "email": "sdf",
       "password": "getta",
-      "watch_list": [],
+      "watch_list": [
+        "bitcoin"
+      ],
       "id": 2
+    },
+    {
+      "first_name": "Mulugeta",
+      "last_name": "Robertson",
+      "username": "name",
+      "email": "getta@getta.com",
+      "password": "password",
+      "watch_list": [
+        "bitcoin",
+        "ripple",
+        "solana"
+      ],
+      "id": 4
+    },
+    {
+      "first_name": "ASDds",
+      "last_name": "http://localhost:4200/",
+      "username": "asd",
+      "email": "sfdfads@dsfda.com",
+      "password": "asd",
+      "watch_list": [],
+      "id": 5
     }
   ]
 }

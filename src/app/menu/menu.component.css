@@ -1,0 +1,21 @@
+.menu-spacer {
+  flex: 1 1 auto;
+}
+
+.menu {
+  background-color: rgb(62, 126, 164);
+  margin-bottom: 10px;
+}
+.title {
+  font-size: xx-large;
+}
+
+.logo {
+  width: 80px;
+  padding: 10px 10px 10px 10px;
+  overflow: scroll;
+}
+
+a:link {
+  text-decoration: none;
+}

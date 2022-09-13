@@ -1,14 +1,15 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import { Subscription } from 'rxjs';
+import { Observable, skipUntil, Subscription, take } from 'rxjs';
 import { CryptoService } from '../shared/service/crypto.service';
 import { Icrypto } from './crypto-data-component-datasource';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-import { user } from '../shared/user';
+import { User } from '../shared/user';
 import { AuthService } from '../shared/service/auth.service';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'jquery';
 
 @Component({
   selector: 'app-crypto-data-component',
@@ -20,6 +21,7 @@ export class CryptoDataComponentComponent implements OnInit, OnDestroy {
   errorMessage = '';
   sub: Subscription | undefined;
   userSub: Subscription | undefined;
+  subLog: Subscription | undefined;
 
   displayedColumns: string[] = [
     'market_cap_rank',
@@ -34,7 +36,7 @@ export class CryptoDataComponentComponent implements OnInit, OnDestroy {
   dataSource!: MatTableDataSource<Icrypto>;
   id = '';
   watchList: string[] = [];
-
+  
   constructor(
     private cryptoDataService: CryptoService,
     private router: Router,
@@ -48,15 +50,17 @@ export class CryptoDataComponentComponent implements OnInit, OnDestroy {
   paginator!: MatPaginator;
 
   ngOnInit(): void {
+    // if not logged In, redirect to login page
+    // add subscription
     this.sub = this.cryptoDataService.getCrypto().subscribe((stream) => {
       this.dataSource = new MatTableDataSource(stream);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
 
-    this.userSub = this.auth.watchList$.subscribe((data) =>
+    this.userSub = this.auth.userInfo$.subscribe((user) =>
     {
-      this.watchList = data ||[];
+      this.watchList = user?.watch_list || [];
     })
   }
 
@@ -77,25 +81,17 @@ export class CryptoDataComponentComponent implements OnInit, OnDestroy {
   }
 
   addWatch(id: string) {
-    console.log(id);
-    if (this.auth.isLoggedIn$) {
-      const watchList = this.auth.watchList$.value;
-      watchList.push(id);
-      this.auth.setWatchListState(watchList);
+    if(this.watchList.indexOf(id) === -1){
+      this.watchList.push(id);
     }
-    console.log(this.watchList)
+    // set User state in auth service
   }
 
   removeWatch(id: string) {
-    if (this.auth.isLoggedIn$) {
-      const watchList = this.auth.watchList$.value;
-      const index = watchList.indexOf(id);
-      if (index > -1) {
-        watchList.splice(index, 1);
-        this.auth.setWatchListState(watchList);
-      }
-
+    const index = this.watchList.indexOf(id);
+    if(index > -1){
+      this.watchList.splice(index, 1);
     }
-    console.log(this.watchList)
+    // set User state in auth service
   }
 }

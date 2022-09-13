@@ -1,14 +1,28 @@
-<mat-card class="card">
-  <mat-card-header>{{ data.id }}</mat-card-header>
-  <div mat-card-avatar class="cardheader"></div>
-  <mat-card-title><title></title></mat-card-title>
-  <mat-card-subtitle>sub</mat-card-subtitle>
-  <mat-card-content>
-    <p>
+<div class="card">
+  <div><img alt="logo" src="{{ data.image.large }}" /></div>
+  <div class="title">
+    <h1>{{ data.name }}</h1>
+  </div>
+  <div class="rank">{{data}}</div>
+  <div class="body">
+    <markdown>
       {{ data.description.en }}
-    </p>
+    </markdown>
+  </div>
+</div>
+
+<!--<mat-card class="card">
+  <mat-card-header><img alt="logo" src="{{data.image.large}}"></mat-card-header>
+  <div class="title">
+      <mat-card-title>{{data.name}}</mat-card-title>
+    </div>
+
+  <mat-card-content>
+    <markdown>
+      {{ data.description.en }}
+    </markdown>
     <h3>Website</h3>
     <a href="{{ link }}" *ngFor="let link of data.links.homepage">{{ link }}</a>
   </mat-card-content>
   <mat-card-footer>Footer</mat-card-footer>
-</mat-card>
+</mat-card>-->

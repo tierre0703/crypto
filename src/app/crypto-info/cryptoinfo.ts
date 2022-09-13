@@ -14,5 +14,10 @@ export interface cryptoInfo {
     official_forum_url: [];
     chat_url: [];
     announcement_url: [];
+  },
+  image: {
+        thumb: string,
+        small: string,
+        large: string
   };
 }

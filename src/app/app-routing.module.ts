@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CryptoDataComponentComponent } from './crypto-data-component/crypto-data-component.component';
-import { DetailComponent } from './detail.component';
+import { DetailComponent } from './detail/detail.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 

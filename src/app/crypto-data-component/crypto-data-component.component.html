@@ -6,12 +6,7 @@
   <table mat-table matSort [dataSource]="dataSource">
     <!-- Market Rank Column -->
     <ng-container matColumnDef="market_cap_rank">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        sortActionDescription="Sort by rank"
-      >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by rank">
         No.
       </th>
       <td mat-cell *matCellDef="let element">{{ element.market_cap_rank }}</td>
@@ -27,12 +22,7 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        sortActionDescription="Sort by name"
-      >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
         Name
       </th>
       <td mat-cell *matCellDef="let element">
@@ -78,7 +68,7 @@
         <button *ngIf="!watchList.includes(element.id)" (click)="addWatch(element.id)" class="btn btn-primary">
           Add
         </button>
-        <button *ngIf="watchList.includes(element.id)"(click)="removeWatch(element.id)" class="btn btn-danger">
+        <button *ngIf="watchList.includes(element.id)" (click)="removeWatch(element.id)" class="btn btn-danger">
           Remove
         </button>
       </td>
@@ -87,11 +77,6 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-  <mat-paginator
-    class="page-item"
-    [pageSizeOptions]="[10, 30, 50]"
-    showFirstLastButtons
-    aria-label="Select page"
-  >
+  <mat-paginator class="page-item" [pageSizeOptions]="[10, 30, 50]" showFirstLastButtons aria-label="Select page">
   </mat-paginator>
 </mat-card>

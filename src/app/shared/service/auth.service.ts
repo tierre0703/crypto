@@ -1,38 +1,75 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { user } from '../user';
+import { Router } from '@angular/router';
+import {
+  BehaviorSubject,
+  catchError,
+  map,
+  tap,
+  Observable,
+  throwError,
+} from 'rxjs';
+import { LoginRequest, SignupRequest, User } from '../user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  public isLoggedIn$: BehaviorSubject<boolean>;
-  public watchList$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+  private _isLoggedIn = new BehaviorSubject<boolean>(false);
 
-  constructor(public http:HttpClient) {
-    const isLoggedIn = localStorage.getItem('loggedIn') === 'false';
-    this.isLoggedIn$ = new BehaviorSubject(isLoggedIn);
+  public isLoggedIn$ = this._isLoggedIn.asObservable();
+
+  private _userInfo: BehaviorSubject<User | null> =
+    new BehaviorSubject<User | null>(null);
+
+  readonly userInfo$ = this._userInfo.asObservable();
+
+  constructor(public http: HttpClient, private router: Router) {}
+
+  setState(d: boolean): void {
+    this._isLoggedIn.next(d);
   }
 
-  getState() {
-    return localStorage.getItem('loggedIn');
+  setUserState(d: User): void {
+    this._userInfo.next(d);
   }
 
-  setState(d: boolean) {
-    this.isLoggedIn$.next(d);
+  /**
+   * login function
+   * @param data - LoginRequest param for login
+   * @returns Observable<User>
+   */
+  login(data: LoginRequest): Observable<User> {
+    return this.http.post<User>('http://localhost:3000/login', data).pipe(
+      map((user)=>{
+        this.setUserState(user);
+        return user;
+      },
+      catchError(err=>{
+        // catch error handling
+        throw err;
+      })
+      )
+    );
   }
 
-
-  setWatchListState(d:string[])
-  {
-    this.watchList$.next(d);
-  }
-
-
-  logout() {
-    this.isLoggedIn$.next(false);
-    this.watchList$.next([]);
+  logout(): void {
+    this.setState(false);
+    this._userInfo.next(null);
     localStorage.clear();
+  }
+
+  signup(formData: SignupRequest): Observable<User> {
+    return this.http.post<User>('http://localhost:3000/signup', formData).pipe(
+      map(
+        (user) => {
+          return user;
+        }
+      ),
+      catchError(err=>{
+        // catch error handling
+        throw err;
+      })
+    );
   }
 }

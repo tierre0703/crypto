@@ -101,7 +101,7 @@
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": ["node_modules/marked/marked.min.js"]
           }
         },
         "lint": {
@@ -120,6 +120,6 @@
     "schematicCollections": [
       "@angular-eslint/schematics"
     ],
-    "analytics": "8e0b88f5-7555-41fe-9045-632ec9927836"
+    "analytics": "392e5b84-9095-4ef8-bff3-844203338b13"
   }
 }
